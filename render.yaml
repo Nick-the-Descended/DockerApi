@@ -1,0 +1,34 @@
+services:
+  # PHP web service
+  - type: web
+    name: php-api
+    env: docker
+    dockerfile: Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: MYSQL_HOST
+        value: db
+      - key: MYSQL_DATABASE
+        value: phpproj
+      - key: MYSQL_USER
+        value: pa
+      - key: MYSQL_PASSWORD
+        value: E*V$5Z#6BkuFZ
+
+  # MySQL database service
+  - type: pserv
+    name: db
+    env: docker
+    dockerfile: ./mysql/Dockerfile
+    envVars:
+      - key: MYSQL_DATABASE
+        value: phpproj
+      - key: MYSQL_ROOT_PASSWORD
+        value: E*V$5Z#6BkuFZ
+      - key: MYSQL_USER
+        value: pa
+      - key: MYSQL_PASSWORD
+        value: E*V$5Z#6BkuFZ
+    disk:
+      name: db-data
+      mountPath: /var/lib/mysql
