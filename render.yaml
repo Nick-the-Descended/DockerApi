@@ -3,7 +3,7 @@ services:
   - type: web
     name: php-api
     env: docker
-    dockerfile: Dockerfile
+    dockerfilePath: Dockerfile
     healthCheckPath: /
     envVars:
       - key: MYSQL_HOST
@@ -19,7 +19,7 @@ services:
   - type: pserv
     name: db
     env: docker
-    dockerfile: ./mysql/Dockerfile
+    dockerfilePath: ./mysql/Dockerfile
     envVars:
       - key: MYSQL_DATABASE
         value: phpproj
